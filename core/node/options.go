@@ -43,6 +43,7 @@ type Options struct {
 	logconfig.LogOptions
 	OptionsNetwork
 	Discovery  OptionsDiscovery
+	MMN        OptionsMMN
 	Quality    OptionsQuality
 	Location   OptionsLocation
 	Transactor OptionsTransactor

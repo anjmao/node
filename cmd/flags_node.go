@@ -18,11 +18,12 @@
 package cmd
 
 import (
+	"gopkg.in/urfave/cli.v1"
+	"gopkg.in/urfave/cli.v1/altsrc"
+
 	"github.com/mysteriumnetwork/node/core/node"
 	"github.com/mysteriumnetwork/node/logconfig"
 	openvpn_core "github.com/mysteriumnetwork/node/services/openvpn/core"
-	"gopkg.in/urfave/cli.v1"
-	"gopkg.in/urfave/cli.v1/altsrc"
 )
 
 var (
@@ -64,6 +65,7 @@ func RegisterFlagsNode(flags *[]cli.Flag) error {
 
 	RegisterFlagsNetwork(flags)
 	RegisterFlagsDiscovery(flags)
+	RegisterFlagsMMN(flags)
 	RegisterFlagsQuality(flags)
 	RegisterFlagsTransactor(flags)
 	openvpn_core.RegisterFlags(flags)
@@ -89,6 +91,7 @@ func ParseFlagsNode(ctx *cli.Context) node.Options {
 
 		OptionsNetwork: ParseFlagsNetwork(ctx),
 		Discovery:      ParseFlagsDiscovery(ctx),
+		MMN:            ParseFlagsMMN(ctx),
 		Quality:        ParseFlagsQuality(ctx),
 		Location:       ParseFlagsLocation(ctx),
 		Transactor:     ParseFlagsTransactor(ctx),
